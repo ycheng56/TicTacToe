@@ -3,74 +3,47 @@ import java.util.Scanner;
 
 public class TicTacToeController implements IController {
   private TicTacToe model;
-  private Scanner in;
   private IView view;
 
-  public TicTacToeController(TicTacToe model, InputStream in, IView view) {
+  public TicTacToeController(TicTacToe model) {
     this.model = model;
-    this.in = new Scanner(in);
+  }
+
+  public void setView(IView view) {
     this.view = view;
+    view.addFeatures(this);
+    view.showBoard(model.toString());
   }
 
   @Override
-  public void go() {
+  public void start() {
+    model = new TicTacToeModel();
+    view.showBoard(model.toString());
     view.startGame();
-    boolean quit = false;
-    while (!quit) {
-      model = new TicTacToeModel();
-      view.showBoard(model.toString());
-
-      while (!model.isGameOver()) {
-        makeMove();
-        view.showBoard(model.toString());
-      }
-
-      view.showWinner(model.getWinner());
-      quit = restart();
-    }
-    view.endGame();
+    view.clearInputString();
   }
 
   @Override
   public void makeMove() {
-    while (true) {
-      view.showStringEntry(model.getTurn());
-
-      String rowString = in.next();
-      if (rowString.equals("q")) {
-        view.endGame();
-        System.exit(0);
+    String input = view.getInputString();
+    try {
+      String[] inputList = input.split(" ");
+      int row = Integer.parseInt(inputList[0]);
+      int col = Integer.parseInt(inputList[1]);
+      model.move(row,col);
+      view.showBoard(model.toString());
+      view.clearInputString();
+      if (model.isGameOver()) {
+        view.showInfo("Player " + model.getWinner() + " Wins!");
       }
-
-      String colString = in.next();
-      if (colString.equals("q")) {
-        view.endGame();
-        System.exit(0);
-      }
-
-      try {
-        int row = Integer.parseInt(rowString);
-        int col = Integer.parseInt(colString);
-        model.move(row, col);
-        break;
-      }
-      catch (Exception e) {
-        //e.printStackTrace();
-        view.illegalMove();
+      else {
+        view.showInfo("Player " + model.getTurn() + "'s turn.Please enter the position:");
       }
     }
-  }
-
-  @Override
-  public boolean restart() {
-    while (true) {
-      view.restartGame();
-      String option = in.next();
-      if (option.toLowerCase().equals("q")) {
-        return true;
-      } else if (option.toLowerCase().equals("y")) {
-        return false;
-      }
+    catch (Exception e) {
+      view.showBoard(model.toString());
+      view.clearInputString();
+      view.showInfo("This position is invalid. Please re-enter the position:");
     }
   }
 }

@@ -2,8 +2,8 @@ public class GameStarter {
 
   public static void main(String[] args) {
     TicTacToeModel model = new TicTacToeModel();
-    IView view = new TicTacToeView(System.out);
-    IController controller = new TicTacToeController(model,System.in,view);
-    controller.go();
+    TicTacToeController controller = new TicTacToeController(model);
+    IView view = new JFrameView("Tic Tac Toe");
+    controller.setView(view);
   }
 }

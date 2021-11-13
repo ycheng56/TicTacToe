@@ -1,8 +1,6 @@
 public interface IController {
 
-  void go();
+  void start();
 
   void makeMove();
-
-  boolean restart();
 }

@@ -1,15 +1,14 @@
 public interface IView {
-  void startGame();
 
-  void showStringEntry(Player player);
+  String getInputString();
+
+  void clearInputString();
 
   void showBoard(String s);
 
-  void showWinner(Player player);
+  void startGame();
 
-  void restartGame();
+  void addFeatures(IController features);
 
-  void illegalMove();
-
-  void endGame();
+  void showInfo(String s);
 }
