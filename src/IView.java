@@ -1,10 +1,6 @@
 public interface IView {
 
-  String getInputString();
-
-  void clearInputString();
-
-  void showBoard(String s);
+  void showBoard(int i, Player p);
 
   void startGame();
 

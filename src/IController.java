@@ -2,5 +2,5 @@ public interface IController {
 
   void start();
 
-  void makeMove();
+  void makeMove(int r, int c);
 }
