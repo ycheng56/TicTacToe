@@ -1,23 +1,29 @@
-import java.io.InputStream;
-import java.util.Scanner;
+package tictactoe;
 
-public class TicTacToeController implements IController {
+/**
+ * This class represents a controller for the TicTacToe Game.
+ */
+public class SwingTicTacToeController implements TicTacToeController {
 
   private TicTacToe model;
-  private IView view;
+  private TicTacToeView view;
 
-  public TicTacToeController(TicTacToe model) {
+  /**
+   * Construct a TicTacToe Game controller, and initialize it with
+   * Given TicTacToe model and GUI view.
+   *
+   * @param view the GUI view.
+   * @param model the TicTacToe game model
+   */
+  public SwingTicTacToeController(TicTacToeView view,TicTacToe model) {
     this.model = model;
-  }
-
-  public void setView(IView view) {
     this.view = view;
     view.addFeatures(this);
   }
 
   @Override
-  public void start() {
-    model = new TicTacToeModel();
+  public void playGame() {
+    model.resetGame();
     view.startGame();
   }
 

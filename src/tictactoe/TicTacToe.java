@@ -1,3 +1,4 @@
+package tictactoe;
 
 /**
  * A single game of Tic Tac Toe, played on a three-by-three grid with two players,
@@ -40,7 +41,7 @@ public interface TicTacToe {
   Player getWinner();
 
   /**
-   * Return the current game state, as a 2D array of Player. A {@code null} value in the grid
+   * Return the current game state, as a 2D array of tictactoe.Player. A {@code null} value in the grid
    * indicates an empty position on the board.
    *
    * @return the current game board

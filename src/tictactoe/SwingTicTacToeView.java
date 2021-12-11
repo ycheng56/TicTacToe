@@ -1,14 +1,24 @@
+package tictactoe;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class JFrameView extends JFrame implements IView {
+/**
+ * This is a GUI view for the TicTacToe Game.
+ */
+public class SwingTicTacToeView extends JFrame implements TicTacToeView {
 
   private JLabel infoLabel;
   private JPanel gameArea;
   private JButton[] cells;
   private JButton startButton;
 
-  public JFrameView(String caption) {
+  /**
+   * Construct a TicTacToe GUI View.
+   *
+   * @param caption the GUI caption
+   */
+  public SwingTicTacToeView(String caption) {
     super(caption);
 
     setSize(500, 500);
@@ -40,10 +50,12 @@ public class JFrameView extends JFrame implements IView {
     JPanel panel = new JPanel(new GridLayout(3, 3));
     panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
     cells = new JButton[9];
+    // assign buttons to the list
     for (int i = 0; i < cells.length; i++) {
       cells[i] = new JButton(" ");
       cells[i].setFont(new Font("Arial", Font.PLAIN, 130));
       cells[i].setPreferredSize(new Dimension(150, 150));
+      cells[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
       panel.add(cells[i]);
     }
     return panel;
@@ -57,15 +69,15 @@ public class JFrameView extends JFrame implements IView {
 
   @Override
   public void startGame() {
-    for (int i = 0; i < cells.length; i++) {
-      cells[i].setText(" ");
+    for (JButton cell : cells) {
+      cell.setText(" ");
     }
     infoLabel.setText("Player X's turn.");
   }
 
   @Override
-  public void addFeatures(IController features) {
-    startButton.addActionListener(evt -> features.start());
+  public void addFeatures(TicTacToeController features) {
+    startButton.addActionListener(evt -> features.playGame());
     for (int i = 0; i < cells.length; i++) {
       int row = i / 3;
       int col = i % 3;
