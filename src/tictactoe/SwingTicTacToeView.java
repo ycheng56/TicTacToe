@@ -31,6 +31,7 @@ public class SwingTicTacToeView extends JFrame implements TicTacToeView {
     gameArea.add(addButton());
 
     infoLabel = new JLabel("Welcome to TicTacToe Game! Player X's turn.");
+    infoLabel.setFont(new Font("Arial", Font.PLAIN, 20));
     startButton = new JButton("Start New Game");
 
     startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -46,7 +47,13 @@ public class SwingTicTacToeView extends JFrame implements TicTacToeView {
 
   }
 
-  public JPanel addButton() {
+  /**
+   * Add 9 buttons to the board, each button represent
+   * a slot on the board
+   * @return the board panel
+   */
+  private JPanel addButton() {
+    // initialize a panel to store the buttons
     JPanel panel = new JPanel(new GridLayout(3, 3));
     panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
     cells = new JButton[9];

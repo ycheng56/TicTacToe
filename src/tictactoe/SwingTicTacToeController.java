@@ -29,9 +29,7 @@ public class SwingTicTacToeController implements TicTacToeController {
 
   @Override
   public void makeMove(int r, int c) {
-    if (model.isGameOver()) {
-      //view.showInfo("Game Over. Please start a new game.");
-    } else {
+    if (!model.isGameOver()) {
       try {
         Player p = model.getTurn();
         int idx = r * 3 + c;

@@ -57,4 +57,10 @@ public interface TicTacToe {
    * @return the player at the given position, or null if it's empty
    */
   Player getMarkAt(int r, int c);
+
+
+  /**
+   *  Reset and clean the game board
+   */
+  void resetGame();
 }

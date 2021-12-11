@@ -82,6 +82,12 @@ public class TicTacToeModel implements TicTacToe {
     return this.board[r][c];
   }
 
+  @Override
+  public void resetGame() {
+    this.board = new Player[3][3];
+    this.round = 0;
+  }
+
   /**
    * Determine if current board has the same three marks in any row
    * @return current board has the same three marks in any row
