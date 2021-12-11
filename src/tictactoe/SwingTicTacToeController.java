@@ -1,7 +1,8 @@
 package tictactoe;
 
 /**
- * This class represents a controller for the TicTacToe Game.
+ * This class represents a controller for the TicTacToe Game,
+ * which implements the TicTacToe controller interface.
  */
 public class SwingTicTacToeController implements TicTacToeController {
 

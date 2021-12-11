@@ -215,7 +215,6 @@ public class TicTacToeModelTest {
     assertEquals(Player.O, bd2[2][0]);
   }
 
-  // TODO: test case where board is full AND there is a winner
   @Test
   public void testXIsWinner() {
     ttt1.move(0, 0);

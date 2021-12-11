@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
- * This class represents a tictactoe.TicTacToe Model, which implements the tictactoe.TicTacToe interface
+ * This class represents a TicTacToe Model, which implements the TicTacToe interface
  */
 public class TicTacToeModel implements TicTacToe {
 
@@ -13,7 +13,7 @@ public class TicTacToeModel implements TicTacToe {
   private int round;
 
   /**
-   * Construct an tictactoe.TicTacToeModel. No parameter is given.
+   * Construct an TicTacToe Model. No parameter is given.
    */
   public TicTacToeModel() {
     resetGame();

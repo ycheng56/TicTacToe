@@ -48,7 +48,7 @@ public class SwingTicTacToeView extends JFrame implements TicTacToeView {
   }
 
   /**
-   * Add 9 buttons to the board, each button represent
+   * Add 9 buttons to the panel, each button represent
    * a slot on the board
    * @return the board panel
    */
@@ -57,7 +57,7 @@ public class SwingTicTacToeView extends JFrame implements TicTacToeView {
     JPanel panel = new JPanel(new GridLayout(3, 3));
     panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
     cells = new JButton[9];
-    // assign buttons to the list
+    // assign 9 buttons to the list
     for (int i = 0; i < cells.length; i++) {
       cells[i] = new JButton(" ");
       cells[i].setFont(new Font("Arial", Font.PLAIN, 130));
@@ -67,7 +67,6 @@ public class SwingTicTacToeView extends JFrame implements TicTacToeView {
     }
     return panel;
   }
-
 
   @Override
   public void showBoard(int i, Player p) {

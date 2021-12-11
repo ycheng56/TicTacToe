@@ -6,14 +6,15 @@ package tictactoe;
 public interface TicTacToeView {
 
   /**
-   * Show the whole game board
+   * update the game board
+   *
    * @param i the index of the cell
    * @param p Player
    */
   void showBoard(int i, Player p);
 
   /**
-   * Start a new game
+   * Start a new TicTacToe game
    */
   void startGame();
 
